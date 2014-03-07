@@ -33,7 +33,10 @@ angularLocalStorageを参考にchrome extension開発でも使えるようにchr
   // just storing something in localStorage with cookie backup for unsupported browsers
   storage.set($scope,'key','value',opts);
   // getting that value
-  storage.get($scope,'key',opts);
+  var promise = storage.get($scope,'key',opts);
+  promise.then(function(data){
+    $scope.varName = data;
+  });
 
   // clear all localStorage values
   storage.clearAll($scope,opts);
